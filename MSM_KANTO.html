@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>MSM_KANTO</title>
+        <meta charset="utf-8">
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+            crossorigin=""
+        />
+        <script
+            src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""
+        ></script>
+    </head>
+    <body style="margin: 50px 50px">
+        <div style="text-align: center; font-size:3em; font-weight:bold">MY STARBUCKS MAP</div>
+        <div id="map" style="height: 80vh"></div>
+        <script>
+            const map = L.map('map', {
+                center: [35.8, 139.7],
+                zoom: 9,
+            });
+            const backgroundLayer = L.tileLayer(
+                'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+                    maxZoom: 19,
+                    attribution:
+                        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                },
+            );
+            map.addLayer(backgroundLayer);
+
+            // 下記のようにも書ける
+            L.marker([35.944816, 139.990594]).bindPopup('イオンタウン守谷店').addTo(map);
+            L.marker([35.464613, 139.624694]).bindPopup('横浜スカイビル店').addTo(map);
+            L.marker([36.322434, 139.012052]).bindPopup('高崎駅ビル モントレー店').addTo(map);
+            L.marker([36.312452, 139.805777]).bindPopup('ヴァル小山店').addTo(map);
+            L.marker([35.906084, 139.623434]).bindPopup('ルミネ大宮 LUMINE2店').addTo(map);
+            L.marker([35.679911, 139.76361]).bindPopup('丸の内三菱ビル店').addTo(map);
+            L.marker([35.635004, 139.884325]).bindPopup('舞浜 イクスピアリ店').addTo(map);
+ 
+
+            // 出典表示を追加
+            map.attributionControl.addAttribution(
+                '<a href="https://www.gsi.go.jp/LAW/heimencho.html">平面直角座標系（平成十四年国土交通省告示第九号）</a>',
+            );
+        </script>
+        <div style="text-align: right; font-size:1em;">2023.3.19</div>
+    </body>
+</html>
